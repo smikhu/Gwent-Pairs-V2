@@ -1,9 +1,78 @@
-img {
-    width: 100%;
-    height: 100%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cinzel Decorative", cursive;
+  color: white;
 }
 
-.char {
-    width: 250px;
-    height: 350px;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 10px;
+}
+
+.logo {
+  width: 225px;
+  height: 225px;
+  border: 2px solid #f9f9f9;
+  border-radius: 50%;
+  box-shadow: 5px 2px 15px red;
+}
+
+.card {
+  width: 125px;
+  height: 200px;
+  border: 2px solid #f9f9f9;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 3px;
+}
+
+.title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.counters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  color: black;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+}
+
+.rules {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title-container {
+  position: relative;
+  text-align: center;
 }
