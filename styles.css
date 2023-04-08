@@ -10,20 +10,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: black;
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* transform-style: preserve-3d; */
 }
 
-.card-container {
+.cards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 50px;
-  grid-row-gap: 10px;
+  grid-row-gap: 35px;
 }
 
 .logo {
@@ -35,14 +36,31 @@ body {
 }
 
 .card {
-  width: 125px;
+  width: 145px;
   height: 200px;
-  border: 2px solid #f9f9f9;
+
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 3px;
+  /* transition: transform 0.5s ease;
+  transform-style: preserve-3d; */
+  transform: rotateY(180deg)
+}
+
+.back {
+  width: 145px;
+  height: 200px;
+  cursor: pointer;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 3px;
+  border: 2px solid #f9f9f9;
   box-shadow: 1px 1px 5px white;
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+
 }
 
 .title {
@@ -77,6 +95,7 @@ button {
 .name {
   display: flex;
   justify-content: center;
+  transform: rotateY(180deg)
 }
 
 .rules {
@@ -91,4 +110,8 @@ button {
 
 .menu {
   text-align: center;
+}
+
+.back.flipped {
+  transform: rotateY(180deg);
 }
