@@ -17,7 +17,6 @@ body {
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* transform-style: preserve-3d; */
 }
 
 .cards-container {
@@ -38,14 +37,11 @@ body {
 .card {
   width: 145px;
   height: 200px;
-
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 3px;
-  /* transition: transform 0.5s ease;
-  transform-style: preserve-3d; */
-  transform: rotateY(180deg)
+  transform: rotateY(180deg);
 }
 
 .back {
@@ -60,7 +56,6 @@ body {
   box-shadow: 1px 1px 5px white;
   transition: transform 0.3s ease;
   transform-style: preserve-3d;
-
 }
 
 .title {
@@ -92,10 +87,10 @@ button {
   height: 25px;
 }
 
-.name {
+.card-name {
   display: flex;
   justify-content: center;
-  transform: rotateY(180deg)
+  transform: rotateY(180deg);
 }
 
 .rules {
