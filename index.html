@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./images/witcher-favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -22,11 +23,12 @@
                 <img class="logo" src="images/witcher.png" alt="witcher-logo">
             </div>
             <div class="rules">
-                <h5>Match all the cards before you run out of lives!</h5>
+                <h5>Match all 8 pairs before you run out of lives!</h5>
             </div>
         </div>
 
         <div class="cards-container">
+
             <div class="card" data-name="cirilla">
                 <p class="card-name">Cirilla</p>
                 <img class="back" src="images/back.jpg" data-matched="false" data-name="cirilla" alt="cirilla">
@@ -95,15 +97,32 @@
 
         <div class="counters">
             <div class="music">
-                music
+                <audio id="flip-sound" src="audio/cardflip.mp3"></audio>
+                <audio id="incorrect" src="/audio/incorrect.mp3"></audio>
+                <audio id="correct" src="/audio/correct.mp3"></audio>
+                <audio id="gameLost" src="/audio/dead.mp3"></audio>
+                <audio id="gameWon" src="/audio/questcompleted.mp3"></audio>
+                <audio src="audio/LullabyOfWoe.mp3" id="background-music" volume="0.5" controls></audio>
+
             </div>
             <div class="menu">
                 <h3>Lives Remaining - <span id="lives">7</span></h3>
                 <br>
                 <h3>Matched - <span id="matched">0</span></h3>
                 <br>
-                <button>Reset</button>
+                <button class="btn">Reset</button>
             </div>
+
+            <div id="gameOver" class="menu fade-in">
+                <h1 class="lose">Game Over!</h1>
+                <button class="btn">Reset</button>
+            </div>
+
+            <div id="winGame" class="menu fade-in">
+                <h1 class="win">You've Won!</h1>
+                <button class="btn">Play Again</button>
+            </div>
+
         </div>
 
     </div>

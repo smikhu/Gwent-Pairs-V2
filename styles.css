@@ -3,14 +3,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Cinzel Decorative", cursive;
-  color: white;
+  color: #f9f9f9;
 }
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
+  min-height: 100vh;
   background-color: black;
 }
 
@@ -37,10 +37,6 @@ body {
 .card {
   width: 145px;
   height: 200px;
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 3px;
   transform: rotateY(180deg);
 }
 
@@ -48,11 +44,12 @@ body {
   width: 145px;
   height: 200px;
   cursor: pointer;
-  border-top-left-radius: 15px;
+  border-radius: 5px;
+  /* border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 5px;
-  border-bottom-left-radius: 3px;
-  border: 2px solid #f9f9f9;
+  border-bottom-left-radius: 3px; */
+  border: 1px solid #f9f9f9;
   box-shadow: 1px 1px 5px white;
   transition: transform 0.3s ease;
   transform-style: preserve-3d;
@@ -79,7 +76,7 @@ body {
   transform: translate(-50%, 0);
 }
 
-button {
+.btn {
   color: black;
   cursor: pointer;
   font-size: 14px;
@@ -91,6 +88,7 @@ button {
   display: flex;
   justify-content: center;
   transform: rotateY(180deg);
+  /* visibility: hidden; */
 }
 
 .rules {
@@ -109,4 +107,37 @@ button {
 
 .back.flipped {
   transform: rotateY(180deg);
+}
+
+#gameOver,
+#winGame {
+  color: red;
+  text-align: center;
+  display: absolute;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* visibility: hidden; */
+  /* transition-duration: 2s;
+  opacity: 1;
+  transition: opacity 1s ease-in-out; */
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
+
+h1,
+.lose {
+  color: red;
+}
+
+.win {
+  color: green;
 }
