@@ -34,25 +34,19 @@ body {
   box-shadow: 5px 2px 15px red;
 }
 
-.card {
-  width: 145px;
-  height: 200px;
-  transform: rotateY(180deg);
-}
-
 .back {
   width: 145px;
   height: 200px;
   cursor: pointer;
   border-radius: 5px;
-  /* border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 3px; */
   border: 1px solid #f9f9f9;
   box-shadow: 1px 1px 5px white;
   transition: transform 0.3s ease;
   transform-style: preserve-3d;
+}
+
+.back.flipped {
+  transform: rotateY(180deg);
 }
 
 .title {
@@ -69,31 +63,19 @@ body {
 }
 
 .music {
-  display: absolute;
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
-.btn {
+.btn,
+#start-game-btn {
   color: black;
   cursor: pointer;
   font-size: 14px;
   width: 100px;
   height: 25px;
-}
-
-.card-name {
-  display: flex;
-  justify-content: center;
-  transform: rotateY(180deg);
-  /* visibility: hidden; */
-}
-
-.rules {
-  position: absolute;
-  bottom: 0;
 }
 
 .title-container {
@@ -105,32 +87,37 @@ body {
   text-align: center;
 }
 
-.back.flipped {
-  transform: rotateY(180deg);
-}
-
-#gameOver,
-#winGame {
-  color: red;
+#game-over,
+#win-game {
   text-align: center;
-  display: absolute;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  /* visibility: hidden; */
-  /* transition-duration: 2s;
-  opacity: 1;
-  transition: opacity 1s ease-in-out; */
-}
-
-.fade-in {
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: visibility 0s, opacity 0.5s ease-out;
 }
 
-.fade-in.show {
+#game-over.show,
+#win-game.show {
+  visibility: visible;
   opacity: 1;
+}
+
+#start-game {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  visibility: visible;
+  opacity: 1;
+}
+
+#start-game.hide {
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.5s ease-out;
 }
 
 h1,
@@ -143,20 +130,20 @@ h1,
 }
 
 /* audio::-webkit-media-controls-panel
-audio::-webkit-media-controls-mute-button
-audio::-webkit-media-controls-play-button
-audio::-webkit-media-controls-timeline-container
-audio::-webkit-media-controls-current-time-display
-audio::-webkit-media-controls-time-remaining-display
-audio::-webkit-media-controls-timeline
-audio::-webkit-media-controls-volume-slider-container
-audio::-webkit-media-controls-volume-slider
-audio::-webkit-media-controls-seek-back-button
-audio::-webkit-media-controls-seek-forward-button
-audio::-webkit-media-controls-fullscreen-button
-audio::-webkit-media-controls-rewind-button
-audio::-webkit-media-controls-return-to-realtime-button
-audio::-webkit-media-controls-toggle-closed-captions-button */
+  audio::-webkit-media-controls-mute-button
+  audio::-webkit-media-controls-play-button
+  audio::-webkit-media-controls-timeline-container
+  audio::-webkit-media-controls-current-time-display
+  audio::-webkit-media-controls-time-remaining-display
+  audio::-webkit-media-controls-timeline
+  audio::-webkit-media-controls-volume-slider-container
+  audio::-webkit-media-controls-volume-slider
+  audio::-webkit-media-controls-seek-back-button
+  audio::-webkit-media-controls-seek-forward-button
+  audio::-webkit-media-controls-fullscreen-button
+  audio::-webkit-media-controls-rewind-button
+  audio::-webkit-media-controls-return-to-realtime-button
+  audio::-webkit-media-controls-toggle-closed-captions-button */
 
 audio::-webkit-media-controls-timeline,
 audio::-webkit-media-controls-current-time-display,
