@@ -24,7 +24,7 @@
             </div>
             <div id="start-game">
                 <div class="menu">
-                    <h4>Match all 8 pairs before you run out of lives!</h4>
+                    <h4>Match all 8 pairs before your health bar reaches zero!</h4>
                     <br>
                     <button id="start-game-btn">Play</button>
                 </div>
@@ -104,17 +104,33 @@
                 <audio id="flip-sound" src="audio/cardflip.mp3"></audio>
                 <audio id="incorrect" src="/audio/incorrect.mp3"></audio>
                 <audio id="correct" src="/audio/correct.mp3"></audio>
+                <audio id="potion" src="audio/potion.mp3"></audio>
                 <audio id="gameLost" src="/audio/dead.mp3"></audio>
                 <audio id="gameWon" src="/audio/questcompleted.mp3"></audio>
                 <audio src="audio/LullabyOfWoe.mp3" controlsList="nodownload noplaybackrate" id="background-music"
                     controls></audio>
             </div>
-            <div class="menu">
-                <h3>Lives Remaining - <span id="lives">7</span></h3>
-                <br>
-                <h3>Matched - <span id="matched">0</span></h3>
-                <br>
+
+            <div class="hud">
+                <div class="life-container">
+                    <div class="life-img-container">
+                        <img class="life-img" src=" /images/skull.png" alt="">
+                    </div>
+                    <div class="bar-container life">
+                        <div class="bar-decrement"></div>
+                    </div>
+                </div>
+
+                <div class="match-container">
+                    <div class="match-img-container">
+                        <img class="match-img" src="/images/witcher-health.png" alt="">
+                    </div>
+                    <div class="bar-container match">
+                        <div class="bar-increment"></div>
+                    </div>
+                </div>
             </div>
+
 
             <div id="game-over">
                 <h1 class="lose">Game Over!</h1>
@@ -122,7 +138,7 @@
             </div>
 
             <div id="win-game">
-                <h1 class="win">You've Won!</h1>
+                <h1 class="win">Congratulations!</h1>
                 <button class="btn">Play Again</button>
             </div>
 
