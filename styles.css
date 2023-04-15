@@ -7,31 +7,44 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   min-height: 100vh;
   background-color: black;
+}
+
+nav ul {
+  width: 100%;
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  list-style: none;
+  padding: 10px;
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* border: 2px solid green; */
 }
 
 .cards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 50px;
-  grid-row-gap: 35px;
+  /* grid-column-gap: 50px; */
+  /* grid-row-gap: 35px; */
+  grid-column-gap: 35px;
+  grid-row-gap: 25px;
 }
 
 .logo {
   width: 225px;
   height: 225px;
-  border: 2px solid #f9f9f9;
+  border: 3px solid #e5c100;
   border-radius: 50%;
-  box-shadow: 5px 2px 15px red;
+  box-shadow: 5px 2px 15px #e5c100;
 }
 
 .back {
@@ -39,8 +52,8 @@ body {
   height: 200px;
   cursor: pointer;
   border-radius: 5px;
-  border: 1px solid #f9f9f9;
-  box-shadow: 1px 1px 5px white;
+  border: 2px solid #e5c100;
+  box-shadow: -2px 1px 10px #e5c100;
   transition: transform 0.3s ease;
   transform-style: preserve-3d;
 }
@@ -49,41 +62,52 @@ body {
   transform: rotateY(180deg);
 }
 
-.title {
+.title-container {
   position: relative;
   display: flex;
   justify-content: center;
 }
 
-.counters {
+.end-menu {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
-.music {
+/* .music {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-}
+} */
 
 .btn,
 #start-game-btn {
-  color: black;
+  color: #e5c100;
+  background-color: black;
+  border-radius: 5px;
+  border: 2px solid #e5c100;
   cursor: pointer;
   font-size: 14px;
   width: 100px;
   height: 25px;
+  transition: transform 0.2s ease-in-out;
 }
 
-.title-container {
+.btn:hover,
+#start-game-btn:hover {
+  transform: scale(1.1);
+  background-color: #e5c100;
+  color: black;
+}
+
+.title {
   position: relative;
   text-align: center;
 }
 
-.menu {
+.start-menu {
   text-align: center;
 }
 
@@ -91,7 +115,7 @@ body {
 #win-game {
   text-align: center;
   position: absolute;
-  bottom: 0;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, 0);
   visibility: hidden;
@@ -120,7 +144,10 @@ body {
   transition: visibility 0.2s, opacity 0.5s ease-out;
 }
 
-h1,
+h1 {
+  color: #e5c100;
+}
+
 .lose {
   color: red;
 }
@@ -129,29 +156,25 @@ h1,
   color: green;
 }
 
-/* audio::-webkit-media-controls-panel
-  audio::-webkit-media-controls-mute-button
-  audio::-webkit-media-controls-play-button
-  audio::-webkit-media-controls-timeline-container
-  audio::-webkit-media-controls-current-time-display
-  audio::-webkit-media-controls-time-remaining-display
-  audio::-webkit-media-controls-timeline
-  audio::-webkit-media-controls-volume-slider-container
-  audio::-webkit-media-controls-volume-slider
-  audio::-webkit-media-controls-seek-back-button
-  audio::-webkit-media-controls-seek-forward-button
-  audio::-webkit-media-controls-fullscreen-button
-  audio::-webkit-media-controls-rewind-button
-  audio::-webkit-media-controls-return-to-realtime-button
-  audio::-webkit-media-controls-toggle-closed-captions-button */
+#play-pause-icon,
+#how-to,
+#characters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #e5c100;
+  border: 3px solid #e5c100;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+}
 
-audio::-webkit-media-controls-timeline,
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display,
-audio::-webkit-media-controls-volume-slider,
-audio::-webkit-media-controls-volume-slider-container,
-audio::-webkit-media-controls-mute-button {
-  display: none;
+#play-pause-icon:hover,
+#how-to:hover,
+#characters:hover {
+  transform: scale(1.1);
 }
 
 /* HEALTH AND MATCH BAR */
@@ -182,7 +205,7 @@ audio::-webkit-media-controls-mute-button {
   width: 100%;
   border: 2px solid black;
   border-radius: 5px;
-  border: 2px solid white;
+  border: 2px solid #e5c100;
   margin-left: -20px;
 }
 
@@ -219,7 +242,7 @@ audio::-webkit-media-controls-mute-button {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  border: 1px solid white;
+  border: 1px solid #e5c100;
   z-index: 1;
 }
 

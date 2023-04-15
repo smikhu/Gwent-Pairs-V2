@@ -5,26 +5,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="./images/witcher-favicon.png">
+    <link rel="icon" type="image/png" href="images/witcher-favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <title>Witcher's Wild Match</title>
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><i id="characters" class="fa-solid fa-eye"></i></li>
+            <li><i id="how-to" class="fa-solid fa-question"></i></li>
+            <li><i id="play-pause-icon" class="fas fa-pause"></i></li>
+        </ul>
+        <div class="sounds">
+            <audio id="flip-sound" src="audio/cardflip.mp3"></audio>
+            <audio id="incorrect" src="/audio/incorrect.mp3"></audio>
+            <audio id="correct" src="/audio/correct.mp3"></audio>
+            <audio id="potion" src="audio/potion.mp3"></audio>
+            <audio id="gameLost" src="/audio/dead.mp3"></audio>
+            <audio id="gameWon" src="/audio/questcompleted.mp3"></audio>
+            <audio src="audio/LullabyOfWoe.mp3" id="background-music"></audio>
+        </div>
+    </nav>
+
     <div class="container">
 
-        <div class="title">
-            <div class="title-container">
+        <div class="title-container">
+            <div class="title">
                 <h1>Witcher's Wild Match</h1>
                 <img class="logo" src="images/witcher.png" alt="witcher-logo">
             </div>
             <div id="start-game">
-                <div class="menu">
-                    <h4>Match all 8 pairs before your health bar reaches zero!</h4>
+                <div class="start-menu">
+                    <h4>Match all pairs before your health depletes!</h4>
                     <br>
                     <button id="start-game-btn">Play</button>
                 </div>
@@ -33,88 +51,62 @@
 
         <div class="cards-container">
 
+            <!-- <p class="card-name">Cirilla</p> -->
+            <img class="back" src="images/back.jpg" data-matched="false" data-name="cirilla" alt="cirilla">
 
             <!-- <p class="card-name">Cirilla</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="cirilla" alt="cirilla">
 
-
-            <!-- <p class="card-name">Cirilla</p> -->
-            <img class="back" src="images/back.jpg" data-matched="false" data-name="cirilla" alt="cirilla">
-
+            <!-- <p class="card-name">Yennefer</p> -->
+            <img class="back" src="images/back.jpg" data-matched="false" data-name="yennefer" alt="yennefer">
 
             <!-- <p class="card-name">Yennefer</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="yennefer" alt="yennefer">
 
-
-            <!-- <p class="card-name">Yennefer</p> -->
-            <img class="back" src="images/back.jpg" data-matched="false" data-name="yennefer" alt="yennefer">
-
+            <!-- <p class="card-name">Geralt</p> -->
+            <img class="back" src="images/back.jpg" data-matched="false" data-name="geralt" alt="geralt">
 
             <!-- <p class="card-name">Geralt</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="geralt" alt="geralt">
 
-
-            <!-- <p class="card-name">Geralt</p> -->
-            <img class="back" src="images/back.jpg" data-matched="false" data-name="geralt" alt="geralt">
-
+            <!-- <p class="card-name">Iorweth</p> -->
+            <img class="back" src="images/back.jpg" data-matched="false" data-name="iorweth" alt="iorweth">
 
             <!-- <p class="card-name">Iorweth</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="iorweth" alt="iorweth">
 
-
-            <!-- <p class="card-name">Iorweth</p> -->
-            <img class="back" src="images/back.jpg" data-matched="false" data-name="iorweth" alt="iorweth">
-
+            <!-- <p class="card-name">Foltest</p> -->
+            <img class="back" src="images/back.jpg" data-matched="false" data-name="foltest" alt="foltest">
 
             <!-- <p class="card-name">Foltest</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="foltest" alt="foltest">
 
-
-            <!-- <p class="card-name">Foltest</p> -->
-            <img class="back" src="images/back.jpg" data-matched="false" data-name="foltest" alt="foltest">
-
+            <!-- <p class="card-name">Dandelion</p> -->
+            <img class="back" src="images/back.jpg" data-matched="false" data-name="dandelion" alt="dandelion">
 
             <!-- <p class="card-name">Dandelion</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="dandelion" alt="dandelion">
 
-
-            <!-- <p class="card-name">Dandelion</p> -->
-            <img class="back" src="images/back.jpg" data-matched="false" data-name="dandelion" alt="dandelion">
-
-
             <!-- <p class="card-name">Triss</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="triss" alt="triss">
 
-
             <!-- <p class="card-name">Triss</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="triss" alt="triss">
-
 
             <!-- <p class="card-name">Emhyr</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="emhyr" alt="emhyr">
-
 
             <!-- <p class="card-name">Emhyr</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="emhyr" alt="emhyr">
 
         </div>
 
-        <div class="counters">
-            <div class="music">
-                <audio id="flip-sound" src="audio/cardflip.mp3"></audio>
-                <audio id="incorrect" src="/audio/incorrect.mp3"></audio>
-                <audio id="correct" src="/audio/correct.mp3"></audio>
-                <audio id="potion" src="audio/potion.mp3"></audio>
-                <audio id="gameLost" src="/audio/dead.mp3"></audio>
-                <audio id="gameWon" src="/audio/questcompleted.mp3"></audio>
-                <audio src="audio/LullabyOfWoe.mp3" controlsList="nodownload noplaybackrate" id="background-music"
-                    controls></audio>
-            </div>
+        <div class="end-menu">
 
             <div class="hud">
                 <div class="life-container">
                     <div class="life-img-container">
-                        <img class="life-img" src=" /images/skull.png" alt="">
+                        <img class="life-img" src="images/skull.png" alt="">
                     </div>
                     <div class="bar-container life">
                         <div class="bar-decrement"></div>
@@ -123,7 +115,7 @@
 
                 <div class="match-container">
                     <div class="match-img-container">
-                        <img class="match-img" src="/images/witcher-health.png" alt="">
+                        <img class="match-img" src="images/witcher-health.png" alt="">
                     </div>
                     <div class="bar-container match">
                         <div class="bar-increment"></div>
@@ -131,17 +123,15 @@
                 </div>
             </div>
 
-
             <div id="game-over">
-                <h1 class="lose">Game Over!</h1>
+                <h1 class="lose">DEFEAT!</h1>
                 <button class="btn">Play Again</button>
             </div>
 
             <div id="win-game">
-                <h1 class="win">Congratulations!</h1>
+                <h1 class="win">VICTORY!</h1>
                 <button class="btn">Play Again</button>
             </div>
-
         </div>
 
     </div>

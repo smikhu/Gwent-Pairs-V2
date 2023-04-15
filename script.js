@@ -40,6 +40,7 @@ resetButton.forEach((resetButton) => {
 // Audio controls
 
 let mainTheme = document.querySelector("#background-music");
+let playPauseIcon = document.getElementById("play-pause-icon");
 
 const sounds = {
   flip: new Audio("audio/cardflip.mp3"),
@@ -76,7 +77,7 @@ function startGame() {
 
     shuffle();
 
-    // playMusic();
+    playMusic();
 
     cards.forEach((card) => card.addEventListener("click", flipCard));
 
@@ -186,7 +187,6 @@ function setStartState() {
 }
 
 function setWinState() {
-  // sounds.background.pause();
   setTimeout(function () {
     winGameMenu.style.visibility = "visible";
     winGameMenu.classList.add("show");
@@ -200,7 +200,6 @@ function setLoseState() {
       card.src = `./images/${card.dataset.name}.jpg`;
     }
   });
-  // sounds.background.pause();
   setTimeout(function () {
     gameOverMenu.style.visibility = "visible";
     gameOverMenu.classList.add("show");
@@ -208,9 +207,20 @@ function setLoseState() {
 }
 
 function playMusic() {
-  let backgroundMusic = mainTheme;
-  backgroundMusic.volume = 0.1;
-  backgroundMusic.play();
+  playPauseIcon.addEventListener("click", () => {
+    if (mainTheme.paused) {
+      mainTheme.play();
+      playPauseIcon.classList.remove("fa-play");
+      playPauseIcon.classList.add("fa-pause");
+    } else {
+      mainTheme.pause();
+      playPauseIcon.classList.remove("fa-pause");
+      playPauseIcon.classList.add("fa-play");
+    }
+  });
+
+  mainTheme.volume = 0.1;
+  mainTheme.play();
 }
 
 // Function for new game and reset
@@ -236,12 +246,11 @@ function reset() {
 
     // hide game over and win game menus
     gameOverMenu.style.visibility = "hidden";
+    gameOverMenu.classList.remove("show");
     winGameMenu.style.visibility = "hidden";
+    winGameMenu.classList.remove("show");
 
-    // shuffle cards and play background music
-
+    // shuffle cards
     shuffle();
-
-    // playMusic();
   }, 100);
 }
