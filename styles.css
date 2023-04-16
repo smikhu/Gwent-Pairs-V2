@@ -36,7 +36,7 @@ nav ul {
   /* grid-column-gap: 50px; */
   /* grid-row-gap: 35px; */
   grid-column-gap: 35px;
-  grid-row-gap: 25px;
+  grid-row-gap: 15px;
 }
 
 .logo {
@@ -144,7 +144,8 @@ nav ul {
   transition: visibility 0.2s, opacity 0.5s ease-out;
 }
 
-h1 {
+h1,
+h5 {
   color: #e5c100;
 }
 
@@ -157,23 +158,29 @@ h1 {
 }
 
 #play-pause-icon,
-#how-to,
-#characters {
+#how-to-play,
+#characters,
+#linkedin,
+#github,
+#mute {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   color: #e5c100;
   border: 3px solid #e5c100;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   transition: transform 0.2s ease-in-out;
 }
 
 #play-pause-icon:hover,
-#how-to:hover,
-#characters:hover {
+#how-to-play:hover,
+#characters:hover,
+#linkedin:hover,
+#github:hover,
+#mute:hover {
   transform: scale(1.1);
 }
 
@@ -249,4 +256,62 @@ h1 {
 .life,
 .match {
   transition: 0.5s ease;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  /* margin-top: 15px; */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#personal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#brand {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.item {
+  position: relative;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  width: 800px;
+  height: 550px;
+  background-image: url("/images/characters.png");
+  background-size: cover;
+  border: 2px solid #e5c100;
+  border-radius: 5px;
+  box-shadow: -2px 1px 10px #e5c100;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.item:hover .popup {
+  visibility: visible;
+  opacity: 1;
 }

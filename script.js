@@ -40,7 +40,10 @@ resetButton.forEach((resetButton) => {
 // Audio controls
 
 let mainTheme = document.querySelector("#background-music");
-let playPauseIcon = document.getElementById("play-pause-icon");
+let playPauseIcon = document.querySelector("#play-pause-icon");
+
+let muteButton = document.querySelector("#mute");
+muteButton.addEventListener("click", muteToggle);
 
 const sounds = {
   flip: new Audio("audio/cardflip.mp3"),
@@ -74,6 +77,9 @@ function startGame() {
   setTimeout(function () {
     startGameMenu.style.visibility = "hidden";
     startGameMenu.classList.add("hide");
+
+    sounds.flip.currentTime = 0;
+    sounds.flip.play();
 
     shuffle();
 
@@ -223,6 +229,20 @@ function playMusic() {
   mainTheme.play();
 }
 
+function muteToggle() {
+  for (let sound in sounds) {
+    if (sounds[sound].muted) {
+      sounds[sound].muted = false;
+      muteButton.classList.remove("fa-solid", "fa-volume-xmark");
+      muteButton.classList.add("fa-solid", "fa-volume-high");
+    } else {
+      sounds[sound].muted = true;
+      muteButton.classList.remove("fa-solid", "fa-volume-high");
+      muteButton.classList.add("fa-solid", "fa-volume-xmark");
+    }
+  }
+}
+
 // Function for new game and reset
 
 function reset() {
@@ -249,6 +269,9 @@ function reset() {
     gameOverMenu.classList.remove("show");
     winGameMenu.style.visibility = "hidden";
     winGameMenu.classList.remove("show");
+
+    sounds.flip.currentTime = 0;
+    sounds.flip.play();
 
     // shuffle cards
     shuffle();

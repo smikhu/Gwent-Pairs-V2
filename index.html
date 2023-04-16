@@ -16,22 +16,29 @@
 </head>
 
 <body>
+
+    <div class="sounds">
+        <audio id="flip-sound" src="audio/cardflip.mp3"></audio>
+        <audio id="incorrect" src="/audio/incorrect.mp3"></audio>
+        <audio id="correct" src="/audio/correct.mp3"></audio>
+        <audio id="potion" src="audio/potion.mp3"></audio>
+        <audio id="gameLost" src="/audio/dead.mp3"></audio>
+        <audio id="gameWon" src="/audio/questcompleted.mp3"></audio>
+        <audio src="audio/LullabyOfWoe.mp3" id="background-music"></audio>
+    </div>
+
     <nav>
         <ul>
-            <li><i id="characters" class="fa-solid fa-eye"></i></li>
-            <li><i id="how-to" class="fa-solid fa-question"></i></li>
+            <div class="item">
+                <li><i id="characters" class="fa-solid fa-eye"></i></li>
+                <div class="popup"></div>
+            </div>
             <li><i id="play-pause-icon" class="fas fa-pause"></i></li>
+            <li><i id="mute" class="fa-solid fa-volume-high"></i></li>
+
         </ul>
-        <div class="sounds">
-            <audio id="flip-sound" src="audio/cardflip.mp3"></audio>
-            <audio id="incorrect" src="/audio/incorrect.mp3"></audio>
-            <audio id="correct" src="/audio/correct.mp3"></audio>
-            <audio id="potion" src="audio/potion.mp3"></audio>
-            <audio id="gameLost" src="/audio/dead.mp3"></audio>
-            <audio id="gameWon" src="/audio/questcompleted.mp3"></audio>
-            <audio src="audio/LullabyOfWoe.mp3" id="background-music"></audio>
-        </div>
     </nav>
+
 
     <div class="container">
 
@@ -51,52 +58,21 @@
 
         <div class="cards-container">
 
-            <!-- <p class="card-name">Cirilla</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="cirilla" alt="cirilla">
-
-            <!-- <p class="card-name">Cirilla</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="cirilla" alt="cirilla">
-
-            <!-- <p class="card-name">Yennefer</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="yennefer" alt="yennefer">
-
-            <!-- <p class="card-name">Yennefer</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="yennefer" alt="yennefer">
-
-            <!-- <p class="card-name">Geralt</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="geralt" alt="geralt">
-
-            <!-- <p class="card-name">Geralt</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="geralt" alt="geralt">
-
-            <!-- <p class="card-name">Iorweth</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="iorweth" alt="iorweth">
-
-            <!-- <p class="card-name">Iorweth</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="iorweth" alt="iorweth">
-
-            <!-- <p class="card-name">Foltest</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="foltest" alt="foltest">
-
-            <!-- <p class="card-name">Foltest</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="foltest" alt="foltest">
-
-            <!-- <p class="card-name">Dandelion</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="dandelion" alt="dandelion">
-
-            <!-- <p class="card-name">Dandelion</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="dandelion" alt="dandelion">
-
-            <!-- <p class="card-name">Triss</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="triss" alt="triss">
-
-            <!-- <p class="card-name">Triss</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="triss" alt="triss">
-
-            <!-- <p class="card-name">Emhyr</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="emhyr" alt="emhyr">
-
-            <!-- <p class="card-name">Emhyr</p> -->
             <img class="back" src="images/back.jpg" data-matched="false" data-name="emhyr" alt="emhyr">
 
         </div>
@@ -135,6 +111,23 @@
         </div>
 
     </div>
+
+    <footer>
+        <div class="footer-container">
+            <div id="personal">
+                <a target="_blank" href="https://github.com/smikhu">
+                    <i id="github" class="fa-brands fa-github"></i>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/in/steven-mikhu-1323a2214/">
+                    <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+            <div id="brand">
+                <h5>Created By || Steven Mikhu</h5>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>
