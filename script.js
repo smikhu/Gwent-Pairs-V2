@@ -126,6 +126,8 @@ function flipCard(event) {
       sounds.flip.play();
       firstChoice.src = `./images/${this.dataset.name}.jpg`;
       numFlipped++;
+      catEye.removeEventListener("click", catPotion);
+      axiiSignPerk.removeEventListener("click", axiiSign);
       // Conditional below prevents the firstChoice card from being the secondChoice card as well
     } else if (secondChoice === null && card !== firstChoice) {
       secondChoice = card;
@@ -135,6 +137,8 @@ function flipCard(event) {
       secondChoice.src = `./images/${this.dataset.name}.jpg`;
       numFlipped++;
       checkForMatch();
+      catEye.addEventListener("click", catPotion);
+      axiiSignPerk.addEventListener("click", axiiSign);
     }
   }
 }

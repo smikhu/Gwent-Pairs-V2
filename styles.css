@@ -7,16 +7,12 @@
 }
 
 body {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
   min-height: 100vh;
   background-color: black;
 }
 
 nav ul {
   width: 100%;
-  /* border: 2px solid blue; */
   display: flex;
   justify-content: flex-end;
   gap: 20px;
@@ -27,16 +23,12 @@ nav ul {
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* border: 2px solid green; */
 }
 
 .cards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* grid-column-gap: 50px; */
-  /* grid-row-gap: 35px; */
-  grid-column-gap: 35px;
-  grid-row-gap: 15px;
+  grid-gap: 15px;
 }
 
 .logo {
@@ -70,17 +62,7 @@ nav ul {
 
 .end-menu {
   position: relative;
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
 }
-
-/* .music {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-} */
 
 .btn,
 #start-game-btn {
@@ -145,6 +127,7 @@ nav ul {
 }
 
 h1,
+h4,
 h5 {
   color: #e5c100;
 }
@@ -212,7 +195,6 @@ h5 {
 
 .bar-container {
   width: 100%;
-  /* border: 3px solid black; */
   border-radius: 5px;
   border: 3px solid #e5c100;
   margin-left: -20px;
@@ -261,11 +243,10 @@ h5 {
 }
 
 footer {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
-  /* margin-top: 15px; */
 }
 
 .footer-container {
@@ -295,7 +276,7 @@ a {
   position: relative;
 }
 
-.popup {
+.character-pop-up {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -307,13 +288,36 @@ a {
   background-size: cover;
   border: 2px solid #e5c100;
   border-radius: 5px;
-  box-shadow: 0px 1px 10px #e5c100;
+  /* box-shadow: 0px 1px 10px #e5c100; */
   z-index: 3;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
-.item:hover .popup {
+.how-to-pop-up {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  width: 650px;
+  height: 600px;
+  background-image: url("/images/how-to.png");
+  background-size: cover;
+  border: 2px solid #e5c100;
+  border-radius: 5px;
+  /* box-shadow: 0px 1px 10px #e5c100; */
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.item:hover .character-pop-up {
+  visibility: visible;
+  opacity: 1;
+}
+
+.item:hover .how-to-pop-up {
   visibility: visible;
   opacity: 1;
 }
