@@ -18,7 +18,7 @@ let matchBar = document.querySelector(".bar-increment");
 let lifeContainer = document.querySelector(".life");
 let matchContainer = document.querySelector(".match");
 
-// Variables for gameOver and winGame menu
+// Variables for gameOver and winGame menu and event listeners
 
 let startGameBtn = document
   .querySelector("#start-game-btn")
@@ -30,12 +30,24 @@ let gameOverMenu = document.querySelector("#game-over");
 
 let winGameMenu = document.querySelector("#win-game");
 
-// Variable for reset buttons
+// Variable for reset buttons and event listener
 
 let resetButton = document.querySelectorAll(".btn");
 resetButton.forEach((resetButton) => {
   resetButton.addEventListener("click", reset);
 });
+
+// Perks variables and event listeners
+
+let catEye = document.querySelector("#cat");
+catEye.addEventListener("click", catPotion);
+
+let potionUsed = false;
+
+let axiiSignPerk = document.querySelector("#axii");
+axiiSignPerk.addEventListener("click", axiiSign);
+
+let axiiSignUsed = false;
 
 // Audio controls
 
@@ -48,6 +60,7 @@ muteButton.addEventListener("click", muteToggle);
 const sounds = {
   flip: new Audio("audio/cardflip.mp3"),
   potion: new Audio("audio/potion.mp3"),
+  sign: new Audio("audio/sign.mp3"),
   incorrect: new Audio("audio/incorrect.mp3"),
   correct: new Audio("audio/correct.mp3"),
   lose: new Audio("audio/dead.mp3"),
@@ -58,6 +71,7 @@ const sounds = {
 sounds.background.volume = 0.1;
 sounds.flip.volume = 0.2;
 sounds.potion.volume = 0.2;
+sounds.sign.volume = 0.2;
 sounds.incorrect.volume = 0.2;
 sounds.correct.volume = 0.2;
 sounds.lose.volume = 0.3;
@@ -86,6 +100,9 @@ function startGame() {
     playMusic();
 
     cards.forEach((card) => card.addEventListener("click", flipCard));
+
+    catEye.addEventListener("click", catPotion);
+    axiiSignPerk.addEventListener("click", axiiSign);
 
     cards.forEach((card) => {
       if (card.classList.contains("flipped")) {
@@ -146,8 +163,6 @@ function checkForMatch() {
       decreaseWidth();
       sounds.incorrect.currentTime = 0;
       sounds.incorrect.play();
-      sounds.potion.currentTime = 0;
-      sounds.potion.play();
     }, 1000);
   }
 }
@@ -171,7 +186,7 @@ function increaseWidth() {
   let currentWidth = parseInt(bar.style.width) || 0;
   let newWidth = currentWidth + 13.5;
   if (newWidth >= 100) {
-    matchContainer.style.boxShadow = "0px 0px 5px 2px #00FF00";
+    matchContainer.style.boxShadow = "0px 0px 5px 1px #00FF00";
     cards.forEach((card) => card.removeEventListener("click", flipCard));
     setWinState();
     sounds.win.play();
@@ -187,9 +202,9 @@ function setStartState() {
       card.src = `./images/${card.dataset.name}.jpg`;
       card.removeEventListener("click", flipCard);
     }
-    // startGameMenu.style.visibility = "visible";
-    // startGameMenu.classList.add("show");
   });
+  catEye.removeEventListener("click", catPotion);
+  axiiSignPerk.removeEventListener("click", axiiSign);
 }
 
 function setWinState() {
@@ -197,6 +212,8 @@ function setWinState() {
     winGameMenu.style.visibility = "visible";
     winGameMenu.classList.add("show");
   }, 200);
+  catEye.removeEventListener("click", catPotion);
+  axiiSignPerk.removeEventListener("click", axiiSign);
 }
 
 function setLoseState() {
@@ -210,6 +227,8 @@ function setLoseState() {
     gameOverMenu.style.visibility = "visible";
     gameOverMenu.classList.add("show");
   }, 200);
+  catEye.removeEventListener("click", catPotion);
+  axiiSignPerk.removeEventListener("click", axiiSign);
 }
 
 function playMusic() {
@@ -273,7 +292,108 @@ function reset() {
     sounds.flip.currentTime = 0;
     sounds.flip.play();
 
+    potionUsed = false;
+    catEye.style = "";
+    catEye.addEventListener("click", catPotion);
+
+    axiiSignUsed = false;
+    axiiSignPerk.style = "";
+    axiiSignPerk.addEventListener("click", axiiSign);
+
     // shuffle cards
     shuffle();
   }, 100);
+}
+
+function catPotion() {
+  if (!potionUsed) {
+    cards.forEach((card) => {
+      if (card.dataset.matched === "false") {
+        card.classList.add("flipped");
+        card.src = `./images/${card.dataset.name}.jpg`;
+      }
+    });
+
+    sounds.potion.currentTime = 0;
+    sounds.potion.play();
+    sounds.flip.currentTime = 0;
+    sounds.flip.play();
+
+    setTimeout(() => {
+      cards.forEach((card) => {
+        if (card.dataset.matched === "false") {
+          card.classList.remove("flipped");
+          card.src = "./images/back.jpg";
+        }
+      });
+    }, 500);
+    potionUsed = true;
+  }
+
+  catEye.style.border = "3px solid grey";
+  catEye.style.transition = "none";
+  catEye.style.transform = "none";
+  catEye.style.cursor = "auto";
+}
+
+function axiiSign() {
+  let bar = document.querySelector(".bar-increment");
+  let currentWidth = parseInt(bar.style.width) || 0;
+  let newWidth = currentWidth + 13.5;
+
+  if (newWidth > 100) {
+    newWidth = 100;
+  }
+
+  if (!axiiSignUsed) {
+    axiiSignUsed = true;
+
+    let unmatchedCards = Array.from(cards).filter(
+      (card) => card.dataset.matched === "false"
+    );
+    if (unmatchedCards.length < 2) {
+      return;
+    }
+
+    let randomIndex = Math.floor(Math.random() * unmatchedCards.length);
+    let firstCard = unmatchedCards[randomIndex];
+    let firstCardName = firstCard.dataset.name;
+
+    let secondCard = unmatchedCards.find(
+      (card) => card.dataset.name === firstCardName && card !== firstCard
+    );
+    if (!secondCard) {
+      // If no matching card is found, call the function again recursively
+      axiiSign();
+      return;
+    }
+
+    // Flip the cards over
+    firstCard.classList.add("flipped");
+    secondCard.classList.add("flipped");
+    firstCard.src = `./images/${firstCard.dataset.name}.jpg`;
+    secondCard.src = `./images/${secondCard.dataset.name}.jpg`;
+    firstCard.dataset.matched = "true";
+    secondCard.dataset.matched = "true";
+    bar.style.width = newWidth + "%";
+
+    sounds.sign.currentTime = 0;
+    sounds.sign.play();
+    sounds.flip.currentTime = 0;
+    sounds.flip.play();
+
+    unmatchedCards = Array.from(cards).filter(
+      (card) => card.dataset.matched === "false"
+    );
+    if (unmatchedCards.length === 0) {
+      setWinState();
+      sounds.win.play();
+      // You can add more logic here to display a game-over message or redirect to a new page
+    }
+  }
+
+  axiiSignPerk.style.border = "3px solid grey";
+  axiiSignPerk.style.transition = "none";
+  axiiSignPerk.style.transform = "none";
+  axiiSignPerk.style.cursor = "auto";
 }

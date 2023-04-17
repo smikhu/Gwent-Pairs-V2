@@ -53,7 +53,7 @@ nav ul {
   cursor: pointer;
   border-radius: 5px;
   border: 2px solid #e5c100;
-  box-shadow: -2px 1px 10px #e5c100;
+  box-shadow: 2px 1px 7px #e5c100;
   transition: transform 0.3s ease;
   transform-style: preserve-3d;
 }
@@ -180,7 +180,9 @@ h5 {
 #characters:hover,
 #linkedin:hover,
 #github:hover,
-#mute:hover {
+#mute:hover,
+#axii:hover,
+#cat:hover {
   transform: scale(1.1);
 }
 
@@ -210,9 +212,9 @@ h5 {
 
 .bar-container {
   width: 100%;
-  border: 2px solid black;
+  /* border: 3px solid black; */
   border-radius: 5px;
-  border: 2px solid #e5c100;
+  border: 3px solid #e5c100;
   margin-left: -20px;
 }
 
@@ -246,10 +248,10 @@ h5 {
 }
 
 .match-img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: 1px solid #e5c100;
+  border: 3px solid #e5c100;
   z-index: 1;
 }
 
@@ -305,7 +307,7 @@ a {
   background-size: cover;
   border: 2px solid #e5c100;
   border-radius: 5px;
-  box-shadow: -2px 1px 10px #e5c100;
+  box-shadow: 0px 1px 10px #e5c100;
   z-index: 3;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -314,4 +316,18 @@ a {
 .item:hover .popup {
   visibility: visible;
   opacity: 1;
+}
+
+.perks {
+  margin-top: 5px;
+}
+
+#cat,
+#axii {
+  height: 35px;
+  width: 35px;
+  border: 3px solid #e5c100;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 }
