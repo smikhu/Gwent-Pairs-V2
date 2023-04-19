@@ -510,7 +510,7 @@ a {
 
 @media only screen and (max-width: 670px) {
   .character-pop-up {
-    width: 450px;
+    width: 500px;
     height: 350px;
   }
 
@@ -522,8 +522,8 @@ a {
 
 @media only screen and (max-width: 505px) {
   .back {
-    width: 80px;
-    height: 120px;
+    width: 75px;
+    height: 110px;
   }
 
   .life-container {
@@ -569,5 +569,15 @@ a {
     width: 25px;
     height: 25px;
     font-size: 13px;
+  }
+
+  .character-pop-up {
+    width: 400px;
+    height: 275px;
+  }
+
+  .how-to-pop-up {
+    width: 350px;
+    height: 300px;
   }
 }
