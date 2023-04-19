@@ -6,11 +6,11 @@
 }
 
 body {
+  height: 100vh;
   background-color: black;
 }
 
 .container {
-  height: 100vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -335,7 +335,7 @@ a {
 
 /* MEDIA QUERIES */
 
-@media only screen and (max-width: 1275px) {
+/* @media only screen and (max-width: 1275px) {
   .logo {
     width: 175px;
     height: 175px;
@@ -357,7 +357,6 @@ a {
 
   footer {
     justify-content: center;
-    /* margin-top: 55px; */
   }
 
   h4 {
@@ -408,9 +407,9 @@ a {
     border: 1px solid #e5c100;
     font-size: 12px;
   }
-}
+} */
 
-@media only screen and (max-width: 1040px) {
+/* @media only screen and (max-width: 1040px) {
   .title-container {
     display: none;
   }
@@ -444,4 +443,5 @@ a {
     width: 25px;
     height: 25px;
   }
-}
+  
+} */
