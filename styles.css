@@ -389,6 +389,7 @@ a {
 
   .cards-container {
     margin-left: 50px;
+    grid-gap: 15px;
   }
 
   #start-game {
@@ -522,8 +523,8 @@ a {
 
 @media only screen and (max-width: 505px) {
   .back {
-    width: 75px;
-    height: 110px;
+    width: 70px;
+    height: 105px;
   }
 
   .life-container {
