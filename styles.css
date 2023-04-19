@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Cinzel Decorative", cursive;
+  color: #e5c100;
 }
 
 body {
@@ -15,25 +16,30 @@ body {
   grid-template-columns: repeat(3, 1fr);
 }
 
-nav ul {
+nav {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  list-style: none;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#personal,
+#game-menu {
+  display: flex;
+  gap: 15px;
   padding: 10px;
 }
 
 .cards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 15px;
+  grid-gap: 30px;
 }
 
 .logo {
   width: 225px;
   height: 225px;
-  border: 3px solid #e5c100;
+  border: 2px solid #e5c100;
   border-radius: 50%;
   box-shadow: 5px 2px 15px #e5c100;
 }
@@ -125,12 +131,6 @@ nav ul {
   transition: visibility 0.2s, opacity 0.5s ease-out;
 }
 
-h1,
-h4,
-h5 {
-  color: #e5c100;
-}
-
 .lose {
   color: red;
 }
@@ -150,7 +150,7 @@ h5 {
   align-items: center;
   cursor: pointer;
   color: #e5c100;
-  border: 3px solid #e5c100;
+  border: 2px solid #e5c100;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -195,7 +195,7 @@ h5 {
 .bar-container {
   width: 100%;
   border-radius: 5px;
-  border: 3px solid #e5c100;
+  border: 2px solid #e5c100;
   margin-left: -20px;
 }
 
@@ -239,32 +239,6 @@ h5 {
 .life,
 .match {
   transition: 0.5s ease;
-}
-
-footer {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#personal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-#brand {
-  margin-top: 5px;
-  margin-right: 10px;
 }
 
 a {
@@ -327,7 +301,7 @@ a {
 #axii {
   height: 35px;
   width: 35px;
-  border: 3px solid #e5c100;
+  border: 2px solid #e5c100;
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
@@ -335,10 +309,10 @@ a {
 
 /* MEDIA QUERIES */
 
-/* @media only screen and (max-width: 1275px) {
+@media only screen and (max-width: 1275px) {
   .logo {
-    width: 175px;
-    height: 175px;
+    width: 200px;
+    height: 200px;
     border: 2px solid #e5c100;
     box-shadow: 5px 2px 10px #e5c100;
   }
@@ -351,7 +325,7 @@ a {
 
   .back {
     width: 125px;
-    height: 175px;
+    height: 180px;
     border: 1px solid #e5c100;
   }
 
@@ -407,21 +381,29 @@ a {
     border: 1px solid #e5c100;
     font-size: 12px;
   }
-} */
+}
 
-/* @media only screen and (max-width: 1040px) {
+@media only screen and (max-width: 1070px) {
   .title-container {
     display: none;
   }
 
   .container {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .hud {
+  .cards-container {
+    margin-left: 50px;
+  }
+
+  #start-game {
+    width: 80%;
+  }
+
+  .end-menu {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   h4 {
@@ -429,8 +411,8 @@ a {
   }
 
   .back {
-    width: 110px;
-    height: 150px;
+    width: 135px;
+    height: 200px;
   }
 
   #play-pause-icon,
@@ -442,6 +424,9 @@ a {
     border: 2px solid #e5c100;
     width: 25px;
     height: 25px;
+    font-size: 12px;
   }
-  
-} */
+}
+
+@media only screen and (max-width: 910px) {
+}
