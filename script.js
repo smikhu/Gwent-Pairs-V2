@@ -51,6 +51,27 @@ let axiiSignUsed = false;
 
 // Audio controls
 
+const popUps = document.querySelectorAll(".pop-up");
+
+// Add a click event listener to each item
+document.querySelectorAll(".item").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    const popUp = event.currentTarget.querySelector(".pop-up");
+    // Toggle the "show" class to show/hide the pop-up
+    popUp.classList.toggle("show");
+  });
+});
+
+// Add a click event listener to the document to hide pop-ups when the user clicks outside of them
+document.addEventListener("click", (event) => {
+  // If the user clicked outside of a pop-up, hide all pop-ups
+  if (!event.target.closest(".pop-up") && !event.target.closest(".item")) {
+    popUps.forEach((popUp) => {
+      popUp.classList.remove("show");
+    });
+  }
+});
+
 let mainTheme = document.querySelector("#background-music");
 let playPauseIcon = document.querySelector("#play-pause-icon");
 

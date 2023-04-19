@@ -266,7 +266,7 @@ a {
   border-radius: 5px;
   z-index: 3;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .how-to-pop-up {
@@ -283,17 +283,13 @@ a {
   border-radius: 5px;
   z-index: 3;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.item:hover .character-pop-up {
+.pop-up.show {
   visibility: visible;
   opacity: 1;
-}
-
-.item:hover .how-to-pop-up {
-  visibility: visible;
-  opacity: 1;
+  pointer-events: auto;
 }
 
 .perks {
@@ -327,12 +323,8 @@ a {
   }
 
   .back {
-    width: 145px;
-    height: 200px;
-  }
-
-  footer {
-    justify-content: center;
+    width: 135px;
+    height: 190px;
   }
 
   h4 {
@@ -439,10 +431,6 @@ a {
     margin-left: 0px;
   }
 
-  .bar-container {
-    border: 1px solid #e5c100;
-  }
-
   .end-menu {
     position: static;
     display: grid;
@@ -460,14 +448,13 @@ a {
     top: unset;
     left: unset;
     transform: none;
-    /* text-align: center; */
     width: auto;
     grid-column: 2/3;
     grid-row: 1/2;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    margin-top: 25px;
   }
 
   #game-over,
@@ -478,20 +465,9 @@ a {
     top: unset;
     left: unset;
     transform: none;
-    justify-items: center; /* centers items horizontally */
-    align-items: center; /* centers items vertically */
     text-align: center;
-    margin-top: 15px;
+    margin-top: 25px;
   }
-  /* #win-game {
-    grid-column: 2/3;
-    grid-row: 1/2;
-    text-align: center;
-    position: static;
-    top: unset;
-    left: unset;
-    transform: none;
-  } */
 
   h4 {
     font-size: 11px;
@@ -510,11 +486,6 @@ a {
     width: 125px;
   }
 
-  .bar-container {
-    border: 2px solid #e5c100;
-    margin-left: -20px;
-  }
-
   .life-img {
     width: 45px;
     height: 45px;
@@ -526,10 +497,77 @@ a {
     margin-right: 5px;
   }
 
+  .character-pop-up {
+    width: 650px;
+    height: 450px;
+  }
+
+  .how-to-pop-up {
+    width: 550px;
+    height: 500px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .character-pop-up {
+    width: 450px;
+    height: 350px;
+  }
+
+  .how-to-pop-up {
+    width: 350px;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 505px) {
+  .back {
+    width: 80px;
+    height: 120px;
+  }
+
+  .life-container {
+    width: 200px;
+  }
+
+  .match-container {
+    width: 125px;
+  }
+
+  .bar-container {
+    border: 1px solid #e5c100;
+    margin-left: -20px;
+  }
+
+  .life-img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .match-img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .perks {
+    margin-top: 5px;
+  }
+
   #cat,
   #axii {
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
+  }
+
+  #play-pause-icon,
+  #how-to-play,
+  #characters,
+  #linkedin,
+  #github,
+  #mute {
     border: 2px solid #e5c100;
+    width: 25px;
+    height: 25px;
+    font-size: 13px;
   }
 }
