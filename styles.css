@@ -3,12 +3,16 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Cinzel Decorative", cursive;
-  color: #f9f9f9;
 }
 
 body {
-  min-height: 100vh;
   background-color: black;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 nav ul {
@@ -18,11 +22,6 @@ nav ul {
   gap: 20px;
   list-style: none;
   padding: 10px;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
 }
 
 .cards-container {
@@ -358,7 +357,7 @@ a {
 
   footer {
     justify-content: center;
-    margin-top: 55px;
+    /* margin-top: 55px; */
   }
 
   h4 {
@@ -444,6 +443,5 @@ a {
     border: 2px solid #e5c100;
     width: 25px;
     height: 25px;
-  
   }
 }
