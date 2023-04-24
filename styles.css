@@ -197,7 +197,7 @@ nav {
 
 .bar-container {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 2px;
   border: 2px solid #e5c100;
   margin-left: -20px;
 }
@@ -207,6 +207,7 @@ nav {
   height: 20px;
   background: linear-gradient(salmon, red);
   transition: width 1s ease;
+  border-radius: 2px;
 }
 
 .bar-increment {
@@ -214,6 +215,7 @@ nav {
   height: 10px;
   background: linear-gradient(lightgreen, green);
   transition: width 1s ease;
+  border-radius: 2px;
 }
 
 .life-img-container {

@@ -64,7 +64,7 @@ document.querySelectorAll(".item").forEach((item) => {
 
 // Add a click event listener to the document to hide pop-ups when the user clicks outside of them
 document.addEventListener("click", (event) => {
-  // If the user clicked outside of a pop-up, hide all pop-ups
+  // Checks wether the clicked element is either a pop-up or item element, pop ups are hidden if it's not
   if (!event.target.closest(".pop-up") && !event.target.closest(".item")) {
     popUps.forEach((popUp) => {
       popUp.classList.remove("show");
@@ -77,6 +77,8 @@ let playPauseIcon = document.querySelector("#play-pause-icon");
 
 let muteButton = document.querySelector("#mute");
 muteButton.addEventListener("click", muteToggle);
+
+// key/value
 
 const sounds = {
   flip: new Audio("audio/cardflip.mp3"),
@@ -98,7 +100,8 @@ sounds.correct.volume = 0.2;
 sounds.lose.volume = 0.3;
 sounds.win.volume = 0.3;
 
-// Shuffle function that shuffles all the cards in a random order at the start of the game
+// Shuffle function that shuffles all the cards in a random order at the start of the game. Loops through each card in cards array and generates random number from 0-15 and sets the order style property to that random number
+// the order property is used to specify the order in which the cards should be displayed within their parent container
 function shuffle() {
   cards.forEach((card) => {
     let mixAndMatch = Math.floor(Math.random() * 16);
@@ -106,6 +109,7 @@ function shuffle() {
   });
 }
 
+// default screen when game is loaded, the "start menu"
 setStartState();
 
 function startGame() {
@@ -125,6 +129,7 @@ function startGame() {
     catEye.addEventListener("click", catPotion);
     axiiSignPerk.addEventListener("click", axiiSign);
 
+    // loops through each card to make sure its not flipped, and if it is, removes flipped class and sets the source image to back
     cards.forEach((card) => {
       if (card.classList.contains("flipped")) {
         card.classList.remove("flipped");
@@ -135,12 +140,15 @@ function startGame() {
 }
 
 function flipCard(event) {
+  // limits the player from choosing more than 2 cards, if there are already 2 cards flipped, the player cant flip any more cards until one of the flipped cards is matched or unflipped
   if (numFlipped < 2) {
     let card = event.target;
+    // if the cards are matched, return and dont do anything more with them, should not be able to be flipped or counted towards progression again
     if (card.dataset.matched === "true") {
       return;
     }
     if (firstChoice === null) {
+      // adding the class "flipped" to first choice, plays flipping sound, changes the image source to the front image based on the dataset name, increments numflipped by 1 and removes the event listeners from perks to prevent player from clicking on them while choosing the first card
       firstChoice = card;
       firstChoice.classList.add("flipped");
       sounds.flip.currentTime = 0;
@@ -166,6 +174,7 @@ function flipCard(event) {
 
 function checkForMatch() {
   if (firstChoice.dataset.name === secondChoice.dataset.name) {
+    // checks if the firstchoice dataset name and secondchoice dataset name are a match
     setTimeout(function () {
       firstChoice.dataset.matched = "true";
       secondChoice.dataset.matched = "true";
@@ -194,9 +203,11 @@ function checkForMatch() {
 
 function decreaseWidth() {
   let bar = document.querySelector(".bar-decrement");
+  // using parseInt to extract the numeric value of style.width and ignores the "%" symbol
   let currentWidth = parseInt(bar.style.width) || 100;
   let newWidth = currentWidth - 14.29;
   if (newWidth <= 0) {
+    // if the bar is less than or == to 0, set lose state and remove the event listeners 
     lifeContainer.style.boxShadow = "0px 0px 10px 5px #ff0000cc";
     cards.forEach((card) => card.removeEventListener("click", flipCard));
     setLoseState();
@@ -221,6 +232,7 @@ function increaseWidth() {
 }
 
 function setStartState() {
+  // the start game menu, flips all the cards face up and removes event listeners until start game is clicked
   cards.forEach((card) => {
     if (!card.classList.contains("flipped")) {
       card.classList.add("flipped");
@@ -233,6 +245,7 @@ function setStartState() {
 }
 
 function setWinState() {
+  // this is called when the player wins and makes this "menu" visible
   setTimeout(function () {
     winGameMenu.style.visibility = "visible";
     winGameMenu.classList.add("show");
@@ -242,6 +255,7 @@ function setWinState() {
 }
 
 function setLoseState() {
+  // this flips over the remaining cards that weren't properly matched and removes event listeners and adds the lose state menu
   cards.forEach((card) => {
     if (!card.classList.contains("flipped")) {
       card.classList.add("flipped");
@@ -257,6 +271,7 @@ function setLoseState() {
 }
 
 function playMusic() {
+  // changes the look of the play/pause icon for the background music
   playPauseIcon.addEventListener("click", () => {
     if (mainTheme.paused) {
       mainTheme.play();
@@ -275,6 +290,7 @@ function playMusic() {
 
 function muteToggle() {
   for (let sound in sounds) {
+    // checks if the sound property is "muted" and updates the icon as well
     if (sounds[sound].muted) {
       sounds[sound].muted = false;
       muteButton.classList.remove("fa-solid", "fa-volume-xmark");
@@ -317,6 +333,7 @@ function reset() {
     sounds.flip.currentTime = 0;
     sounds.flip.play();
 
+    // resets perks
     potionUsed = false;
     catEye.style = "";
     catEye.addEventListener("click", catPotion);
@@ -331,6 +348,7 @@ function reset() {
 }
 
 function catPotion() {
+  // checks if the potion is used, if not used... flips over all the cards that dont have a data matched yet
   if (!potionUsed) {
     cards.forEach((card) => {
       if (card.dataset.matched === "false") {
@@ -344,6 +362,7 @@ function catPotion() {
     sounds.flip.currentTime = 0;
     sounds.flip.play();
 
+    // flips the images back to the back image and sets the potionUsed to true to prevent it being used again
     setTimeout(() => {
       cards.forEach((card) => {
         if (card.dataset.matched === "false") {
@@ -373,13 +392,17 @@ function axiiSign() {
   if (!axiiSignUsed) {
     axiiSignUsed = true;
 
+    // filtering the cards that havent been matched yet
     let unmatchedCards = Array.from(cards).filter(
       (card) => card.dataset.matched === "false"
     );
+    // if there are less than 2 unmatched cards, return without doing anything
     if (unmatchedCards.length < 2) {
       return;
     }
 
+    // if theres 2 or more unmatched cards, randomly selects one card as firstCard and then searches for a matching card with the same name. if not found, calls itself recursively until a matching card is found.
+    // this function is an absolute headache
     let randomIndex = Math.floor(Math.random() * unmatchedCards.length);
     let firstCard = unmatchedCards[randomIndex];
     let firstCardName = firstCard.dataset.name;
@@ -410,10 +433,10 @@ function axiiSign() {
     unmatchedCards = Array.from(cards).filter(
       (card) => card.dataset.matched === "false"
     );
+    // this is to fix when the user clicks the axii sign on the last pair that hasnt been matched yet and ends the game and sets the win state
     if (unmatchedCards.length === 0) {
       setWinState();
       sounds.win.play();
-      // You can add more logic here to display a game-over message or redirect to a new page
     }
   }
 
